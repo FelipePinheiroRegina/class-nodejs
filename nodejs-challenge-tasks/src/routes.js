@@ -7,11 +7,12 @@ export const routes =  [
     {
         method: 'POST',
         path: buildPath('/tasks'),
-        handler: (req, res) => {
+        handler: (req, res, isCsv = false) => {
             if(req.body === null) {
                 return res.writeHead(400).end("Insert a json body with the task title and description properties")
             }
-
+            
+            
             const { title, description } = req.body
 
             if(!title || !description) {
@@ -26,6 +27,10 @@ export const routes =  [
                 created_at: new Date(),
                 updated_at: new Date()
             })
+            
+            if(isCsv) {
+                return 'success'
+            }
 
             return res.writeHead(204).end()
         }
@@ -34,9 +39,21 @@ export const routes =  [
     {
         method: 'POST',
         path: buildPath('/importcsv'),
-        handler: (req, res) => {
-            console.log(req.body)
-            res.writeHead(201).end()
+        handler: async (req, res) => {
+            const { data } = req.body
+            let isCsv
+            if(!data) return res.writeHead(400).end()
+            
+            try {
+                for (const row of data) {
+                    req.body = row
+                    await routes[0].handler(req, res, isCsv = true) 
+                }
+
+                res.writeHead(204).end()
+            } catch (error) {
+                res.writeHead(500).end()
+            }  
         }
     },
 

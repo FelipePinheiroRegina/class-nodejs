@@ -4,14 +4,16 @@ const server = http.createServer(async (req, res) => {
     const buffers = [];
 
     for await (const chunk of req) {
-        buffers.push(chunk);
+        buffers.push(chunk)
     }
 
-    const fullStreamContent = Buffer.concat(buffers).toString();
-    console.log(fullStreamContent)
+    try {
+        req.body = JSON.parse(Buffer.concat(buffers).toString()) 
+    } catch (error) {
+        req.body = null
+    }
 
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('File received and processed');
+    res.setHeader('Content-type', 'application/json') // More utils in APIs node
 });
 
 server.listen(3334, () => console.log('Server running on port 3334'));
