@@ -2,6 +2,9 @@
   "name": "api-rest-module02",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": ">="
+  },
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "knex": "node --import tsx ./node_modules/.bin/knex",
