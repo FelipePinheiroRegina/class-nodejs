@@ -15,9 +15,13 @@ describe("Group test of the router users", () => {
     })
 
     beforeEach(async () => {
-        execSync('npm run knex migrate:rollback --all')
-        execSync('npm run knex migrate:latest')
-    })
+        try {
+            execSync('npm run knex migrate:rollback --all');
+        } catch (error) {
+            // Ignorar erros relacionados à tentativa de reverter tabelas inexistentes
+        }
+        execSync('npm run knex migrate:latest');
+    });    
 
     test("Create a new user", async () => {
         await request(app.server)
