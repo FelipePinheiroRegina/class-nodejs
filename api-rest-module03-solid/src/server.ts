@@ -1,6 +1,5 @@
-import fastify from 'fastify'
 import { env } from './env'
-const app = fastify()
+import { app } from './app'
 
 app.listen({
 	host: '0.0.0.0',
