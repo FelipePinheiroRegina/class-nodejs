@@ -1,17 +1,23 @@
 import { Prisma, User } from '@prisma/client'
 import { UsersRepository } from '../users-repository'
+import { randomUUID } from 'node:crypto'
 
 export class InMemoryUsersRepository implements UsersRepository {
 	private users: User[] = []
 
-	async findByEmail(email: string): Promise<User | null> {
+	async findById(id: string) {
+		const user = this.users.find(user => user.id === id)
+		return user || null
+	}
+
+	async findByEmail(email: string) {
 		const user = this.users.find(user => user.email === email)
 		return user || null
 	}
 
 	async create(data: Prisma.UserCreateInput) {
 		const user = {
-			id: String(new Date().getTime()),
+			id: randomUUID(),
 			name: data.name,
 			email: data.email,
 			password_hash: data.password_hash,
