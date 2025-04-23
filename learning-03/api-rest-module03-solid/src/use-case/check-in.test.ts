@@ -17,8 +17,8 @@ describe('Check In Use Case', () => {
 
 		gymCreated = await gymsRepository.create({
 			title: 'sky fit',
-			latitude: 0,
-			longitude: 0,
+			latitude: -22.3218068,
+			longitude: -49.070981,
 		})
 
 		vi.useFakeTimers()
@@ -79,5 +79,20 @@ describe('Check In Use Case', () => {
 		})
 
 		expect(checkIn.id).toEqual(expect.any(String))
+	})
+
+	it('should not be able to check in on distant gym', async () => {
+		const speedFitness = await gymsRepository.create({
+			title: 'Speed Fitness',
+			latitude: -22.3093407,
+			longitude: -49.0041189,
+		})
+
+		await expect(() => checkInUseCase.execute({
+			gymId: speedFitness.id,
+			userId: 'user01',
+			userLatitude: -22.3218068,
+			userLongitude: -49.070981,
+		})).rejects.toBeInstanceOf(Error)
 	})
 })
