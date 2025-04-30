@@ -35,7 +35,7 @@ describe('Fetch Check-in History Use Case', () => {
 	})
 
 	it('should be able to fetch paginated check-in history', async () => {
-		for (let i = 0; i <= 22; i++) {
+		for (let i = 1; i <= 22; i++) {
 			await checkInsRepository.create({
 				gym_id: `gym-${i.toString().padStart(2, '0')}`,
 				user_id: 'user-01'
@@ -47,9 +47,8 @@ describe('Fetch Check-in History Use Case', () => {
 			page: 2
 		})
 
-		expect(checkIns).toHaveLength(3)
+		expect(checkIns).toHaveLength(2)
 		expect(checkIns).toEqual([
-			expect.objectContaining({ gym_id: 'gym-20'}),
 			expect.objectContaining({ gym_id: 'gym-21'}),
 			expect.objectContaining({ gym_id: 'gym-22'}),
 		])

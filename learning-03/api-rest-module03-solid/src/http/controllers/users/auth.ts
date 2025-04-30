@@ -16,9 +16,19 @@ export async function auth(request: FastifyRequest, reply: FastifyReply) {
 	try {
 		const authUseCase = makeAuthUseCase()
 
-		await authUseCase.execute({
+		const { user } = await authUseCase.execute({
 			email,
 			password
+		})
+
+		const token = await reply.jwtSign({}, {
+			sign: {
+				sub: user.id,
+			}
+		})
+
+		return reply.status(200).send({
+			token,
 		})
 
 	} catch (err) {
@@ -28,6 +38,4 @@ export async function auth(request: FastifyRequest, reply: FastifyReply) {
 
 		throw err
 	}
-
-	return reply.status(200).send()
 }
