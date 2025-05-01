@@ -2,9 +2,20 @@
 
 # last update 10/05/2025
 
-summary of the technologies I've seen so far, how to create a server with fastify, how to register plugins with fastify, how to separate server responsibilities, involving solid and all these concepts, I learned about what a query builder like knex is, what it resolves, I also learned about what an orm is like a prism and what it resolves, I also learned about sqlite, about how it is performative for development. and in deploy you can migrate to postgresql or mysql without any problems, I also learned about docker, docker compose, and their basic configurations for uploading a database container, I learned configurations about eslint, npmrc, I also learned about how to create a project in typescript and make your settings and build for javascript.
+Summary of the technologies I've learned so far:
 
+I learned how to create a server using Fastify, how to register plugins, and how to separate server responsibilities following SOLID principles and other architectural concepts.
 
+I learned what a query builder like Knex is and what problems it solves.
 
+I also learned what an ORM like Prisma is, and how it helps in database management and abstraction.
 
+I studied SQLite, understanding how it's performant for development, and how, in deployment, you can easily migrate to PostgreSQL or MySQL without issues.
 
+I learned the basics of Docker and Docker Compose, including how to configure and run a database container.
+
+I explored configuration tools like ESLint and .npmrc.
+
+Lastly, I learned how to create a project using TypeScript, configure it properly, and build it to JavaScript.
+
+At the moment, I am learning about software development using patterns such as dependency inversion, use cases developed based on unit tests, sometimes using TDD, and also using the factory pattern to instantiate repositories and use cases.
