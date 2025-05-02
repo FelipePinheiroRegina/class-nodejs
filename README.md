@@ -1,6 +1,6 @@
 # Node.js
 
-# last update 10/05/2025
+# last update 02/05/2025
 
 Summary of the technologies I've learned so far:
 
@@ -19,3 +19,5 @@ I explored configuration tools like ESLint and .npmrc.
 Lastly, I learned how to create a project using TypeScript, configure it properly, and build it to JavaScript.
 
 At the moment, I am learning about software development using patterns such as dependency inversion, use cases developed based on unit tests, sometimes using TDD, and also using the factory pattern to instantiate repositories and use cases.
+
+[README - MODULE 03](https://github.com/FelipePinheiroRegina/class-nodejs/tree/main/api-rest-module03-solid)
