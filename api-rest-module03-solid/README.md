@@ -83,3 +83,74 @@ AUTH JWT: JSON WEB TOKEN
 
 7. JWT -> in all requests from then on  
     - Header: Authorization: Bearer JWT
+
+# ABOUT CI/CD
+
+CI -> Continuous Integration
+CD -> Continuous Deployment/Delivery
+
+How configure a CI workflows with github actions.
+at the root of the project create the folder `.github/workflows/tests.yml` for example
+
+# Unit Tests
+
+```yml
+name: Run Unit Tests
+
+on: [push]
+
+jobs:
+  run-unit-tests:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+
+      - run: npm run test
+```
+
+# E2E Tests
+
+```yml
+name: Run E2E Tests
+
+on: [pull_request]
+
+jobs:
+  run-e2e-tests:
+    name: Run E2E Tests
+    runs-on: ubuntu-latest
+
+    services:
+      api-solid-pg:
+        image: bitnami/postgresql
+        ports:
+          - 5432:5432
+        env:
+          POSTGRESQL_USERNAME: docker
+          POSTGRESQL_PASSWORD: docker
+          POSTGRESQL_DATABASE: apisolid
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - run: npm ci
+
+      - run: npm run test:e2e
+        env:
+          JWT_SECRET: TESTING
+          DATABASE_URL: "postgresql://docker:docker@localhost:5432/apisolid"
+
+```
