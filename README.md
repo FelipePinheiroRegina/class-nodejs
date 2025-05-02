@@ -22,4 +22,4 @@ At the moment, I am learning about software development using patterns such as d
 
 In module 03 I created an api based on a gym pass
 
-    - [README - MODULE 03](https://github.com/FelipePinheiroRegina/class-nodejs/tree/main/api-rest-module03-solid)
+- [README - MODULE 03](https://github.com/FelipePinheiroRegina/class-nodejs/tree/main/api-rest-module03-solid)
