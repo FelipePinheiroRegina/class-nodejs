@@ -21,4 +21,5 @@ Lastly, I learned how to create a project using TypeScript, configure it properl
 At the moment, I am learning about software development using patterns such as dependency inversion, use cases developed based on unit tests, sometimes using TDD, and also using the factory pattern to instantiate repositories and use cases.
 
 In module 03 I created an api based on a gym pass
+
     - [README - MODULE 03](https://github.com/FelipePinheiroRegina/class-nodejs/tree/main/api-rest-module03-solid)
