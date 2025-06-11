@@ -2,6 +2,38 @@ spell-checker:disable
 
 # Learning DDD (Domain Driven Design)
 
+# Subdomínios
+
+- Core: O que dá dinheiro
+- Supporting: Dá suporte para o core funcionar
+- Generic: Você precisa, mas não são tão importantes
+
+## Core
+
+- Compra
+- Catálogo
+- Pagamento
+- Entrega
+- Faturamento
+
+## Supporting
+
+- Estoque
+
+## Generic
+
+- Notificação ao cliente
+- Promoções
+- Chat
+
+# Aggregate
+
+Agregado é um grupo de objetos de domínio que pertencem logicamente juntos, onde uma entidade principal (chamada de root ou raiz do agregado) controla o acesso e a integridade dos demais objetos.
+
+# WatchedList
+
+O padrão "Watched List" (ou Watched List Pattern) é um padrão comportamental que gerencia uma lista de objetos associados a um objeto principal, permitindo controlar e sincronizar alterações nesses objetos dependentes. Ele é comumente utilizado em sistemas onde é necessário acompanhar e aplicar mudanças em coleções de objetos relacionados, especialmente em operações de persistência ou sincronização de dados (como em ORMs, por exemplo).
+
 # Domínio
 
 O domínio (domain) refere-se a um conjunto de conceitos, regras, processos e comportamentos que são fundamentais para um determinado negócio ou aplicação. É a área de conhecimento que descreve e organiza todo o conhecimento e entendimento necessário para desenvolver um software que atenda às necessidades do negócio ou aplicação.

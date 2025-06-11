@@ -15,6 +15,19 @@ export default defineConfig([
     files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
     languageOptions: { globals: globals.node },
   },
+  {
+    rules: {
+      '@typescript-eslint/ban-types': [
+        'error',
+        {
+          types: {
+            '{}': false,
+          },
+          extendDefaults: true,
+        },
+      ],
+    },
+  },
   tseslint.configs.recommended,
   eslintConfigPrettier,
   eslintPluginPrettierRecommended,
