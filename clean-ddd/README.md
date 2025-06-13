@@ -2,6 +2,12 @@ spell-checker:disable
 
 # Learning DDD (Domain Driven Design)
 
+# Conceito de Pub/Sub (Publisher/Subscriber)
+
+- Publicadores (Publishers): emitem mensagens (eventos) sem saber quem irá recebê-las.
+- Assinantes (Subscribers): se inscrevem para receber mensagens de interesse.
+- Uma infraestrutura intermediária (broker) faz a mediação e entrega das mensagens dos publicadores aos assinantes.
+
 # Subdomínios
 
 - Core: O que dá dinheiro
